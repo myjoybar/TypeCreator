@@ -1,14 +1,9 @@
 # TypeCreator
+为Gson反序列化创建Type
 
-[Chinese README](README_zh.md)
+使用Gson反序列化时，非常方便的生成type。
 
-
-
-For the deserialization of Gson to create Type While using the deserialisation of Gson, it will generate Type conveniently.
-
-
-
-Not long age, one of my colleague used this code while using Gson to deserialise the Map.
+前不久一个同事在使用Gson反序列化解析map时，使用了这段代码
 
 ```java
   public static <T> Map<String, T> GsonToMaps(String gsonString) {
@@ -21,7 +16,7 @@ Not long age, one of my colleague used this code while using Gson to deserialise
     }
 
 ```
-The reported error/s as follow:
+结果报错如下：
 
 ```java
 	
@@ -29,11 +24,12 @@ java.lang.ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be c
 	
 ```
 
-While checking for the reason of the error/s, I found that because the new TypeToken<Map<String, T>>() { }.getType() did not returns the correct type of the runtime class. In order to generate Type conveniently (because I do not like to write a long list of codes TypeToken), that is why you are reading this blog . 
+排查原因，发现是因为new TypeToken<Map<String, T>>() { }.getType()并没有返回的实际运行的类的Type。
+为了能够方便的生成Type（因为我不喜欢一长串TypeToken的生成方式），所以有了这篇~
 
-###For instance：
+举例说明：
 
-##### 1. To parse JOPO ` StudentsBean` 
+##### 1. 解析JOPO ` StudentsBean` 
 
 ```
   	Type type = TypeGenerator
@@ -45,7 +41,7 @@ While checking for the reason of the error/s, I found that because the new TypeT
 ```
 
 
-##### 2. To parse ` List<StudentsBean>` 
+##### 2. 解析` List<StudentsBean>` 
 
 ```
 	Type type = TypeGenerator
@@ -58,7 +54,7 @@ While checking for the reason of the error/s, I found that because the new TypeT
 ```
 
 
-##### 3. To parse ` Map<String, StudentsBean>` 
+##### 3. 解析` Map<String, StudentsBean>` 
 
 
 ```
@@ -72,7 +68,7 @@ While checking for the reason of the error/s, I found that because the new TypeT
 
     
 ```
-##### 4. A more complicated version ` List<Map<String, Map<String, List<StudentsBean>>>>`
+##### 4. 来个复杂一点的` List<Map<String, Map<String, List<StudentsBean>>>>`
 
                
 ```
