@@ -1,0 +1,12 @@
+
+
+out/
+/*/build/
+
+
+
+# .iml
+*.iml
+
+/.idea/
+/*/.idea/
