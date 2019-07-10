@@ -27,7 +27,7 @@ java.lang.ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be c
 排查原因，发现是因为new TypeToken<Map<String, T>>() { }.getType()并没有返回的实际运行的类的Type。
 为了能够方便的生成Type（因为我不喜欢一长串TypeToken的生成方式），所以有了这篇~
 
-举例说明：
+### 举例说明：
 
 ##### 1. 解析JOPO ` StudentsBean` 
 
